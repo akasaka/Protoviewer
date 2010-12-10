@@ -1,0 +1,8 @@
+<!--
+Filename    : cerny.js.dtd
+Author      : Robert Cerny
+Created     : 2007-11-21
+Last Change : 2007-11-27
+-->
+
+<!ENTITY bootstrap SYSTEM "../../js/ant/bootstrap.js">

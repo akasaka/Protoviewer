@@ -1,0 +1,5 @@
+// (c) 2006-2008 Robert Cerny<![CDATA[function readFile(filename){var reader=new java.io.BufferedReader(new java.io.FileReader(filename));var content="";var line=null;while((line=reader.readLine())!==null){content+=line+"\n";}
+return content;}
+var t=this;function load(filename){var script=readFile(filename);var cx=Packages.org.mozilla.javascript.Context.enter();cx.evaluateString(t,script,"<"+filename+">",1,null);};var cernyjsConfiguration=project.getProperty("cerny.js.configuration");if(!cernyjsConfiguration){throw"The property 'cerny.js.configuration' must point to a valid configuration of the Cerny.js lib.";}
+var cernyjsDir=project.getProperty("cerny.js.dir");if(!cernyjsDir){throw"The property 'cerny.js.dir' must point to the directory of the Cerny.js lib.";}
+load(cernyjsConfiguration);load(cernyjsDir+"/js/runtime/rhino.conf.js");load(cernyjsDir+"/js/cerny.js");CERNY.method(CERNY,"load",load);]]>

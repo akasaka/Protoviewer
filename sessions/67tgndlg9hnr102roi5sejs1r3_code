@@ -1,0 +1,50 @@
+/* Sizing and scales. */
+var w = 500,
+    h = 400,
+    deaths = pv.Scale.linear(0, 800000).range(0, w),
+    injuries = pv.Scale.linear(0, 374643).range(0, h),
+    c = pv.Scale.linear(0, 374643).range(\"orange\", \"brown\");
+
+/* The root panel. */
+var vis = new pv.Panel()
+    .width(w)
+    .height(h)
+    .bottom(20)
+  .left(20)
+    .right(10)
+    .top(10);
+
+/* Y-axis and ticks. */
+vis.add(pv.Rule)
+    .data(injuries.ticks())
+    .bottom(injuries)
+    .strokeStyle(function(d) { return d ? \"#eee\" : \"#000\"; })
+  .anchor(\"left\").add(pv.Label)
+    .visible(function(d) { return d > 0 && d < 374643;})
+    .text(injuries.tickFormat);
+
+/* X-axis and ticks. */
+vis.add(pv.Rule)
+    .data(deaths.ticks())
+    .left(deaths)
+    .strokeStyle(function(d) { return d ? \"#eee\" : \"#000\";})
+  .anchor(\"bottom\").add(pv.Label)
+    .visible(function(d) { return d > 0 && d < 800000;})
+    .text(injuries.tickFormat);
+
+/* The dot plot! */
+vis.add(pv.Dot)
+    .data(data)
+    .left(function(d) { return deaths(d.deaths);})
+    .bottom(function(d) { return injuries(d.injuries); })
+    .strokeStyle(function(d)  { return c(d.injuries); })
+    .fillStyle(function()  { return this.strokeStyle().alpha(.2); });
+
+/* Title */
+vis.add(pv.Label)
+    .left(75)
+    .top(20)
+    .textAlign(\"center\")
+    .text(\"hi\");
+
+vis.render();

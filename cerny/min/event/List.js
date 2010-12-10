@@ -1,0 +1,7 @@
+// (c) 2006-2008 Robert Cerny
+CERNY.require("CERNY.event.List","CERNY.js.Array","CERNY.event.Observable");(function(){var Observable=CERNY.event.Observable;var method=CERNY.method;var signature=CERNY.signature;var name="CERNY.event.List";var logger=CERNY.Logger(name);var EVT_ITEM_ADDED=name+".EVT_ITEM_ADDED";var EVT_ITEM_INSERTED=name+".EVT_ITEM_INSERTED";var EVT_ITEM_REMOVED=name+".EVT_ITEM_REMOVED";var EVT_REARRANGED=name+".EVT_REARRANGED";function List(array){Observable(array);method(array,"addItem",addItem);method(array,"removeItem",removeItem);method(array,"insertItemAt",insertItemAt);method(array,"sortItems",sortItems);}
+signature(List,"undefined",Array);method(CERNY.event,"List",List);CERNY.event.List.EVT_ITEM_ADDED=EVT_ITEM_ADDED;CERNY.event.List.EVT_ITEM_INSERTED=EVT_ITEM_INSERTED;CERNY.event.List.EVT_ITEM_REMOVED=EVT_ITEM_REMOVED;CERNY.event.List.EVT_REARRANGED=EVT_REARRANGED;function addItem(item){this.push(item);this.notify(EVT_ITEM_ADDED);}
+signature(addItem,"undefined","any");function removeItem(item){var index=this.remove(item);this.notify(EVT_ITEM_REMOVED,index);}
+signature(removeItem,"undefined","any");function insertItemAt(index,item){this.insertAt(index,item);this.notify(EVT_ITEM_INSERTED,index);}
+signature(insertItemAt,"number","any");function sortItems(comparator){this.sort(comparator);this.notify(EVT_REARRANGED);}
+signature(sortItems,"undefined","function");})();

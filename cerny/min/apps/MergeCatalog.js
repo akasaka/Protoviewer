@@ -1,0 +1,3 @@
+// (c) 2006-2008 Robert Cerny
+CERNY.require("CERNY.apps.MergeCatalog","CERNY.json.TextPrettyPrinter","CERNY.apps");(function(){var read=CERNY.apps.read;var write=CERNY.apps.write;var method=CERNY.method;var signature=CERNY.signature;var logger=CERNY.Logger("CERNY.apps.MergeCatalog");var MergeCatalog={};CERNY.apps.MergeCatalog=MergeCatalog;MergeCatalog.logger=logger;function main(args){var srcFilename=args[0];var destFilename=args[1];var catalog=CERNY.loadData(srcFilename);var dict=CERNY.Dictionary(catalog);delete(dict.include);delete(dict.logger);delete(dict["topincs.path"]);delete(dict["base.path"]);write(destFilename,CERNY.json.TextPrettyPrinter().print(dict));}
+signature(main,"undefined",Array);method(MergeCatalog,"main",main);})();

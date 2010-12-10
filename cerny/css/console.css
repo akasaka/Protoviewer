@@ -1,0 +1,41 @@
+/*
+ * Filename    : console.css
+ * Author      : Robert Cerny
+ * Created     : 2007-03-30
+ * Last Change : 2007-03-30
+ */
+
+.console {
+  padding: 0;
+  margin: 0;
+  color: white;
+  background-color: black;
+  font-family: monospace;
+  font-size: 1em;
+}
+
+.console p {
+  white-space: pre;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.console p.fatal, .console p.error {
+  color: red;
+}
+
+.console p.warn {
+  color: orange;
+}
+
+.console p.info {
+  color: lightgreen;
+}
+
+.console p.debug {
+  color: lightblue;
+}
+
+.console p.trace {
+  color: white;
+}

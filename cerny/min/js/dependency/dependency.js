@@ -1,0 +1,8 @@
+// (c) 2006-2008 Robert Cerny
+CERNY.namespace("js.dependency");CERNY.require("CERNY.js.dependency","CERNY.js.Array");(function(){var method=CERNY.method;var signature=CERNY.signature;var logger=CERNY.Logger("CERNY.js.dependency");CERNY.js.dependency.logger=logger;var definedTerms=[];function listDependencies(expression,catalog){var dependencies=[];definedTerms=[];CERNY.intercept(CERNY,"require",[createDependencyInterceptor(dependencies,catalog)]);require=CERNY.require;var oldLoad=CERNY.load;method(CERNY,"load",load);var oldCatalog=CERNY.Catalog;CERNY.Catalog=catalog;CERNY.load(catalog.lookup(expression));method(CERNY,"load",oldLoad);CERNY.Catalog=oldCatalog;delete(require);definedTerms.reverse().map(function(term){eval("delete("+term+");");});return dependencies;}
+signature(listDependencies,Array,"string","object");method(CERNY.js.dependency,"listDependencies",listDependencies);function createDependencyInterceptor(sequence,catalog){return{before:function(call){},after:function(call){var requiring=call.arguments[0];call.returnValue.map(function(exp){if(!sequence.contains(exp)){sequence.push(exp);}
+catalog.lookup(exp);define(exp);});if(!sequence.contains(requiring)){sequence.push(requiring);}}}}
+function define(term){var subTerms=term.split("."),parentTerm;if(subTerms.length>1){subTerms.pop();parentTerm=subTerms.join(".");define(parentTerm);}
+if(!CERNY.isPresent(term)){eval(term+" = {}");definedTerms.push(term);}}
+function load(location){var source=CERNY.getResource(location);var requireStatement=extractRequireStatement(source);if(requireStatement){eval(requireStatement);}}
+function extractRequireStatement(sourcecode){var matches=sourcecode.match(new RegExp("^((CERNY\.)?require[^\\)]*)\\)","gmi"));if(matches){return matches[0];}}})();

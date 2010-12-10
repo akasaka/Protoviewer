@@ -1,0 +1,1 @@
+// (c) 2006-2008 Robert Cerny<![CDATA[CERNY.require("CERNY.ant.jsdoc","CERNY.apps.GenerateDoc");var src=attributes.get("src-dir");var dest=attributes.get("dest-dir");CERNY.apps.GenerateDoc.main([src,dest]);]]>
