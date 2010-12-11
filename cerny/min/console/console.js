@@ -1,3 +1,0 @@
-// (c) 2006-2008 Robert Cerny
-CERNY={console:{styleRules:[{match:"FATAL:",cssClass:"fatal"},{match:"ERROR:",cssClass:"error"},{match:"WARN :",cssClass:"warn"},{match:"INFO :",cssClass:"info"},{match:"DEBUG:",cssClass:"debug"},{match:"TRACE:",cssClass:"trace"}],getCssClass:function(message){for(var i=0;i<this.styleRules.length;i++){var styleRule=this.styleRules[i];if(typeof styleRule.match=="string"){if(message&&message.indexOf(styleRule.match)>=0){return styleRule.cssClass;}}}
-return"";}}}

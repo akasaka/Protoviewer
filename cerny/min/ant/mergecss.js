@@ -1,2 +1,0 @@
-// (c) 2006-2008 Robert Cerny
-CERNY.require("CERNY.ant.mergecss","CERNY.apps.MergeCss");var srcFilename=attributes.get("src-file");var destFilename=attributes.get("dest-file");CERNY.apps.MergeCss.main([srcFilename,destFilename]);

@@ -1,7 +1,0 @@
-// (c) 2006-2008 Robert Cerny
-CERNY.require("CERNY.apps.MergeCss","CERNY.apps","CERNY.js.Array");(function(){var read=CERNY.apps.read;var write=CERNY.apps.write;var method=CERNY.method;var signature=CERNY.signature;var logger=CERNY.Logger("CERNY.apps.MergeCss");var MergeCss={};CERNY.apps.MergeCss=MergeCss;MergeCss.logger=logger;function main(args){var srcFilename=args[0];var destFilename=args[1];var mergedCss=mergeCss(srcFilename);write(destFilename,mergedCss);}
-signature(main,"undefined",Array);method(MergeCss,"main",main);function mergeCss(filename){var ignoredImports=[];var cssContent=readCss(filename,ignoredImports);cssContent=ignoredImports.join("\n")+"\n"+cssContent;return cssContent;}
-function readCss(filename,ignoredImports){var cssContent=read(filename);var cssDirname=dirname(filename);var matches=cssContent.match(/@import url\(\".*\"\);/gm);if(matches){matches.map(function(match){var importFilename=match.match(/\"(.*)\"/)[1];var importDirname=dirname(importFilename);var importPathname=cssDirname+"/"+importFilename;var importContent=readCss(importPathname,ignoredImports);if(containsUrls(importContent)&&importDirname!==""){logger.info("import ignored: "+importFilename);ignoredImports.push(match);cssContent=cssContent.replace(match,"");}else{cssContent=cssContent.replace(match,importContent);}});}
-return cssContent;}
-function containsUrls(cssStr){if(cssStr.match(/url\(/)){return true;}else{return false;}}
-function dirname(filename){return filename.substring(0,filename.lastIndexOf("/"));}})();
