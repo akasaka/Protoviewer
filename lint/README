@@ -1,0 +1,21 @@
+JSLint, The JavaScript Code Quality Tool
+
+Douglas Crockford
+douglas@crockford.com
+
+2010-11-27
+
+fulljslint.js contains the fully commented JSLINT function.
+
+fulljslint.html runs the JSLINT function in a web page. The page also depends
+on adsafe.js [www.ADsafe.org] and json2.js [www.JSON.org] (which are not
+included in this project) and intercept.js and init_ui.js (which are).
+
+intercept.js scripts the fulljslint.html ui by augmenting ADsafe.
+
+init_ui.js hooks the HTML ui components to ADsafe.
+
+lint.html describes JSLint's usage.
+
+JSLint can be run anywhere that JavaScript (or Java) can run. See for example
+http://tech.groups.yahoo.com/group/jslint_com/database?method=reportRows&tbl=1

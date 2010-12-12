@@ -2,3 +2,14 @@ Author: Rio Akasaka
 URL: http://www.rioleo.org/protoviewer
 
 Protoviewer is a web-based online design environment for rendering beautiful data visualizations rapidly using Protovis. It is designed to be user-friendly and modular.
+
+The following libraries are used:
+
+* protovis 3.2
+* jQuery and jQuery UI  
+* CodeMirror by Marijn Haverbeke for the code editor and syntax highlighting
+* canviz, a JS library for Graphviz, from which I modified their ColorBrewer mapping.
+* Pretty Print for Javascript by James Padolsey for the rendering of the JSON viewer
+* jquery.editable by Mika Tuupola for inline editing of the data viewer
+* RGB to HTML/Hex for converting ColorBrewer RGB to hexadecimal
+* JSLint by Douglas Crockford, for parsing and evaluating user inputted JavaScript and CSV.
