@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include("config.php");
 $data = $_POST["data"];
 $type = $_POST["type"];
 $sid = $_SESSION['sessionid'];
